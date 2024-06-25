@@ -2,7 +2,7 @@
 
 public class Order
 {
-    public Guid OrderId { get; private init; }
+    public Guid Id { get; private init; }
     public Guid UserId { get; private set; }
     public DateTime OrderDate { get; private set; }
     public string Status { get; private set; }
@@ -17,7 +17,7 @@ public class Order
             throw new ArgumentException( $"'{nameof( orderDate )}' cannot be default.", nameof( orderDate ) );
         }
 
-        if ( string.IsNullOrEmpty( status ) )
+        if ( string.IsNullOrWhiteSpace( status ) )
         {
             throw new ArgumentException( $"'{nameof( status )}' cannot be null or empty.", nameof( status ) );
         }
@@ -27,18 +27,16 @@ public class Order
             throw new ArgumentException( $"'{nameof( totalAmount )}' must be greater than zero.", nameof( totalAmount ) );
         }
 
-        OrderId = Guid.NewGuid();
+        Id = Guid.NewGuid();
         UserId = userId;
         OrderDate = orderDate;
         Status = status;
         TotalAmount = totalAmount;
     }
 
-    private Order() { }
-
     public void SetStatus( string status )
     {
-        if ( string.IsNullOrEmpty( status ) )
+        if ( string.IsNullOrWhiteSpace  ( status ) )
         {
             throw new ArgumentException( $"'{nameof( status )}' cannot be null or empty.", nameof( status ) );
         }

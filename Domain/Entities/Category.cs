@@ -2,33 +2,31 @@
 
 public class Category
 {
-    public Guid CategoryId { get; private init; }
+    public Guid Id { get; private init; }
     public string Name { get; private set; }
     public string Description { get; private set; }
     public ICollection<Product> Products { get; private set; } = new List<Product>();
 
     public Category( string name, string description )
     {
-        if ( string.IsNullOrEmpty( name ) )
+        if ( string.IsNullOrWhiteSpace( name ) )
         {
             throw new ArgumentException( $"'{nameof( name )}' cannot be null or empty.", nameof( name ) );
         }
 
-        if ( string.IsNullOrEmpty( description ) )
+        if ( string.IsNullOrWhiteSpace( description ) )
         {
             throw new ArgumentException( $"'{nameof( description )}' cannot be null or empty.", nameof( description ) );
         }
 
-        CategoryId = Guid.NewGuid();
+        Id = Guid.NewGuid();
         Name = name;
         Description = description;
     }
 
-    private Category() { }
-
     public void SetName( string name )
     {
-        if ( string.IsNullOrEmpty( name ) )
+        if ( string.IsNullOrWhiteSpace( name ) )
         {
             throw new ArgumentException( $"'{nameof( name )}' cannot be null or empty.", nameof( name ) );
         }
@@ -38,7 +36,7 @@ public class Category
 
     public void SetDescription( string description )
     {
-        if ( string.IsNullOrEmpty( description ) )
+        if ( string.IsNullOrWhiteSpace( description ) )
         {
             throw new ArgumentException( $"'{nameof( description )}' cannot be null or empty.", nameof( description ) );
         }

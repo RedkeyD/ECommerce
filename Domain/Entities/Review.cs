@@ -2,7 +2,7 @@
 
 public class Review
 {
-    public Guid ReviewId { get; private init; }
+    public Guid Id { get; private init; }
     public Guid ProductId { get; private set; }
     public Guid UserId { get; private set; }
     public int Rating { get; private set; }
@@ -18,7 +18,7 @@ public class Review
             throw new ArgumentException( $"'{nameof( rating )}' must be between 1 and 5.", nameof( rating ) );
         }
 
-        if ( string.IsNullOrEmpty( comment ) )
+        if ( string.IsNullOrWhiteSpace( comment ) )
         {
             throw new ArgumentException( $"'{nameof( comment )}' cannot be null or empty.", nameof( comment ) );
         }
@@ -28,15 +28,13 @@ public class Review
             throw new ArgumentException( $"'{nameof( reviewDate )}' cannot be default.", nameof( reviewDate ) );
         }
 
-        ReviewId = Guid.NewGuid();
+        Id = Guid.NewGuid();
         ProductId = productId;
         UserId = userId;
         Rating = rating;
         Comment = comment;
         ReviewDate = reviewDate;
     }
-
-    private Review() { }
 
     public void SetRating( int rating )
     {
@@ -50,7 +48,7 @@ public class Review
 
     public void SetComment( string comment )
     {
-        if ( string.IsNullOrEmpty( comment ) )
+        if ( string.IsNullOrWhiteSpace( comment ) )
         {
             throw new ArgumentException( $"'{nameof( comment )}' cannot be null or empty.", nameof( comment ) );
         }
