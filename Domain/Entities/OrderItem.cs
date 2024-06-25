@@ -28,8 +28,6 @@ public class OrderItem
         UnitPrice = unitPrice;
     }
 
-    private OrderItem() { }
-
     public void SetQuantity( int quantity )
     {
         if ( quantity <= 0 )
