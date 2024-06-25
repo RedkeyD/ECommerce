@@ -27,9 +27,9 @@ public class User
             throw new ArgumentException( $"'{nameof( passwordHash )}' cannot be null or empty.", nameof( passwordHash ) );
         }
 
-        if ( string.IsNullOrWhiteSpace( role ) )
+        if ( role == null )
         {
-            throw new ArgumentException( $"'{nameof( role )}' cannot be null or empty.", nameof( role ) );
+            throw new ArgumentException( $"'{nameof( role )}' cannot be null", nameof( role ) );
         }
 
         Id = Guid.NewGuid();

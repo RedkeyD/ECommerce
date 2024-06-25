@@ -11,7 +11,7 @@ public class Review
     public Product Product { get; private set; }
     public User User { get; private set; }
 
-    public Review( Guid productId, Guid userId, int rating, string comment, DateTime reviewDate )
+    public Review( Guid productId, Guid userId, int rating, string comment)
     {
         if ( rating < 1 || rating > 5 )
         {
@@ -23,17 +23,12 @@ public class Review
             throw new ArgumentException( $"'{nameof( comment )}' cannot be null or empty.", nameof( comment ) );
         }
 
-        if ( reviewDate == default )
-        {
-            throw new ArgumentException( $"'{nameof( reviewDate )}' cannot be default.", nameof( reviewDate ) );
-        }
-
         Id = Guid.NewGuid();
         ProductId = productId;
         UserId = userId;
         Rating = rating;
         Comment = comment;
-        ReviewDate = reviewDate;
+        ReviewDate = DateTime.Now;
     }
 
     public void SetRating( int rating )

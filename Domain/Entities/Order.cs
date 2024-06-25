@@ -10,12 +10,8 @@ public class Order
     public User User { get; private set; }
     public ICollection<OrderItem> OrderItems { get; private set; } = new List<OrderItem>();
 
-    public Order( Guid userId, DateTime orderDate, string status, decimal totalAmount )
+    public Order( Guid userId, string status, decimal totalAmount )
     {
-        if ( orderDate == default )
-        {
-            throw new ArgumentException( $"'{nameof( orderDate )}' cannot be default.", nameof( orderDate ) );
-        }
 
         if ( string.IsNullOrWhiteSpace( status ) )
         {
@@ -29,14 +25,14 @@ public class Order
 
         Id = Guid.NewGuid();
         UserId = userId;
-        OrderDate = orderDate;
+        OrderDate = DateTime.Now;
         Status = status;
         TotalAmount = totalAmount;
     }
 
     public void SetStatus( string status )
     {
-        if ( string.IsNullOrWhiteSpace  ( status ) )
+        if ( string.IsNullOrWhiteSpace( status ) )
         {
             throw new ArgumentException( $"'{nameof( status )}' cannot be null or empty.", nameof( status ) );
         }
