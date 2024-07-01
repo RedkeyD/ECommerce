@@ -2,41 +2,34 @@
 
 public class Review
 {
-    public Guid ReviewId { get; private init; }
-    public Guid ProductId { get; private set; }
-    public Guid UserId { get; private set; }
+    public Guid Id { get; }
+    public Guid ProductId { get; }
+    public Guid UserId { get; }
     public int Rating { get; private set; }
     public string Comment { get; private set; }
-    public DateTime ReviewDate { get; private set; }
-    public Product Product { get; private set; }
-    public User User { get; private set; }
+    public DateTime ReviewDate { get; }
+    public Product Product { get; }
+    public User User { get; }
 
-    public Review( Guid productId, Guid userId, int rating, string comment, DateTime reviewDate )
+    public Review( Guid productId, Guid userId, int rating, string comment)
     {
         if ( rating < 1 || rating > 5 )
         {
             throw new ArgumentException( $"'{nameof( rating )}' must be between 1 and 5.", nameof( rating ) );
         }
 
-        if ( string.IsNullOrEmpty( comment ) )
+        if ( string.IsNullOrWhiteSpace( comment ) )
         {
             throw new ArgumentException( $"'{nameof( comment )}' cannot be null or empty.", nameof( comment ) );
         }
 
-        if ( reviewDate == default )
-        {
-            throw new ArgumentException( $"'{nameof( reviewDate )}' cannot be default.", nameof( reviewDate ) );
-        }
-
-        ReviewId = Guid.NewGuid();
+        Id = Guid.NewGuid();
         ProductId = productId;
         UserId = userId;
         Rating = rating;
         Comment = comment;
-        ReviewDate = reviewDate;
+        ReviewDate = DateTime.Now;
     }
-
-    private Review() { }
 
     public void SetRating( int rating )
     {
@@ -50,7 +43,7 @@ public class Review
 
     public void SetComment( string comment )
     {
-        if ( string.IsNullOrEmpty( comment ) )
+        if ( string.IsNullOrWhiteSpace( comment ) )
         {
             throw new ArgumentException( $"'{nameof( comment )}' cannot be null or empty.", nameof( comment ) );
         }
