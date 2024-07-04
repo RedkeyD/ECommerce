@@ -5,12 +5,12 @@ public class User
     public Guid Id { get; }
     public string Username { get; private set; }
     public string Email { get; private set; }
-    public string PasswordHash { get; private set; }
+    public string Password { get; private set; }
     public ICollection<Order> Orders { get; }
     public ICollection<UserRole> UserRoles { get; }
     public Cart ShoppingCart { get; }
 
-    public User( string username, string email, string passwordHash )
+    public User( string username, string email, string password )
     {
         if ( string.IsNullOrWhiteSpace( username ) )
         {
@@ -22,15 +22,15 @@ public class User
             throw new ArgumentException( $"'{nameof( email )}' cannot be null or empty.", nameof( email ) );
         }
 
-        if ( string.IsNullOrWhiteSpace( passwordHash ) )
+        if ( string.IsNullOrWhiteSpace( password ) )
         {
-            throw new ArgumentException( $"'{nameof( passwordHash )}' cannot be null or empty.", nameof( passwordHash ) );
+            throw new ArgumentException( $"'{nameof( password )}' cannot be null or empty.", nameof( password ) );
         }
 
         Id = Guid.NewGuid();
         Username = username;
         Email = email;
-        PasswordHash = passwordHash;
+        Password = password;
     }
 
     public void SetUsername( string username )
@@ -53,13 +53,13 @@ public class User
         Email = email;
     }
 
-    public void SetPasswordHash( string passwordHash )
+    public void SetPasswordHash( string password )
     {
-        if ( string.IsNullOrWhiteSpace( passwordHash ) )
+        if ( string.IsNullOrWhiteSpace( password ) )
         {
-            throw new ArgumentException( $"'{nameof( passwordHash )}' cannot be null or empty.", nameof( passwordHash ) );
+            throw new ArgumentException( $"'{nameof( password )}' cannot be null or empty.", nameof( password ) );
         }
 
-        PasswordHash = passwordHash;
+        Password = password;
     }
 }

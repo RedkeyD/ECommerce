@@ -21,7 +21,7 @@ public class Order
         Id = Guid.NewGuid();
         UserId = userId;
         OrderDate = DateTime.Now;
-        Status =  OrderStatus.Created;
+        Status = OrderStatus.Created;
     }
 
     public void SetStatus( OrderStatus newStatus )
