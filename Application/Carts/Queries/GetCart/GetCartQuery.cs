@@ -1,7 +1,7 @@
-﻿namespace Application.Carts.Queries.GetCart;
-
-using Domain.Entities;
+﻿using Domain.Entities;
 using MediatR;
+
+namespace Application.Carts.Queries.GetCart;
 
 public class GetCartQuery : IRequest<Cart>
 {
