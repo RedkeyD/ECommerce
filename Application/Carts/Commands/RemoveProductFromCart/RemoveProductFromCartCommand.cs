@@ -7,15 +7,8 @@ public class RemoveProductFromCartCommand
 
     public RemoveProductFromCartCommand( Guid cartId, Guid productId )
     {
-        if ( cartId == Guid.Empty )
-        {
-            throw new ArgumentException( $"'{nameof( cartId )}' cannot be null " );
-        }
-
-        if ( productId == Guid.Empty )
-        {
-            throw new ArgumentException( $"'{nameof( productId )}' cannot be null " );
-        }
+        RemoveProductFromCartCommandValidator.ValidateCartId( cartId );
+        RemoveProductFromCartCommandValidator.ValidateProductId( productId );
 
         CartId = cartId;
         ProductId = productId;

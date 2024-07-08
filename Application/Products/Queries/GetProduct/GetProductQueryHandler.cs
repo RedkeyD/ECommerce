@@ -1,5 +1,5 @@
-﻿using Domain.Entities;
-using Application.Interfaces;
+﻿using Application.Interfaces.Repositories;
+using Domain.Entities;
 
 namespace Application.Products.Queries.GetProduct;
 
@@ -14,7 +14,11 @@ public class GetProductQueryHandler
 
     public async Task<Product> Handle( GetProductQuery query )
     {
-        var product = await _productRepository.GetByIdAsync( query.ProductId );
+        GetProductQueryValidator.ValidateProductId(query.ProductId);
+
+        Product product = await _productRepository.GetByIdAsync( query.ProductId );
+
+        GetProductQueryValidator.ValidateProduct(product);
 
         return product;
     }

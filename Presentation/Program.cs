@@ -1,5 +1,4 @@
 using MediatR;
-using Application.Products.Queries.GetProduct;
 
 var builder = WebApplication.CreateBuilder( args );
 

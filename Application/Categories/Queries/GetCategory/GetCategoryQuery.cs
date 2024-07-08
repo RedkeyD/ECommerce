@@ -7,8 +7,10 @@ public class GetCategoryQuery : IRequest<Category>
 {
     public Guid CategoryId { get; }
 
-    public GetCategoryQuery( Guid categoryId)
+    public GetCategoryQuery( Guid categoryId )
     {
+        GetCategoryQueryValidator.ValidateCategoryId( categoryId );
+
         CategoryId = categoryId;
     }
 }
