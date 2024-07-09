@@ -1,46 +1,38 @@
 ﻿using Domain.Entities;
+using Domain.Abstractions;
+using Domain.Errors;
 
 namespace Application.Carts.Commands.AddProductToCart;
 
-public static class AddProductToCartCommandValidator
+public class AddProductToCartCommandValidator
 {
-    public static void ValidateCartId( Guid cartId )
+    public Result Validate( Guid cartId, Guid productId, int quantity, Cart cart, Product product )
     {
         if ( cartId == Guid.Empty )
         {
-            throw new ArgumentException( "Cart ID cannot be empty", nameof( cartId ) );
+            return CartErrors.EmptyCartId;
         }
-    }
 
-    public static void ValidateProductId( Guid productId )
-    {
         if ( productId == Guid.Empty )
         {
-            throw new ArgumentException( "Product ID cannot be empty", nameof( productId ) );
+            return CartErrors.EmptyProductId;
         }
-    }
 
-    public static void ValidateQuantity( int quantity )
-    {
         if ( quantity <= 0 )
         {
-            throw new ArgumentException( "Quantity must be greater than zero", nameof( quantity ) );
+            return CartErrors.NegativeProductQuantity;
         }
-    }
 
-    public static void ValidateCart( Cart cart )
-    {
         if ( cart == null )
         {
-            throw new Exception( "Cart not found" );
+            return CartErrors.CartNotFound;
         }
-    }
 
-    public static void ValidateProduct( Product product )
-    {
         if ( product == null )
         {
-            throw new Exception( "Product not found" );
+            return CartErrors.ProductNotFound;
         }
+
+        return Result.Success();
     }
 }

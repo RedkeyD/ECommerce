@@ -10,7 +10,7 @@ public class GetOrderQuery : IRequest<Order>
 
     public GetOrderQuery( Guid orderId )
     {
-        GetOrderQueryValidator.ValidateOrderId(orderId);
+        GetOrderQueryValidator.ValidateOrderId( orderId );
 
         OrderId = orderId;
     }

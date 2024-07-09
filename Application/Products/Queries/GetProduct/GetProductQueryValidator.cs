@@ -4,7 +4,7 @@ namespace Application.Products.Queries.GetProduct;
 
 public static class GetProductQueryValidator
 {
-    public static void ValidateProductId( Guid productId ) 
+    public static void ValidateProductId( Guid productId )
     {
         if ( productId == Guid.Empty )
         {

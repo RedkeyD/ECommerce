@@ -14,12 +14,7 @@ public class RemoveProductFromCartCommandHandler
 
     public async Task Handle( RemoveProductFromCartCommand command )
     {
-        RemoveProductFromCartCommandValidator.ValidateCartId( command.CartId );
-        RemoveProductFromCartCommandValidator.ValidateProductId( command.ProductId );
-
         Cart cart = await _cartRepository.GetByIdAsync( command.CartId );
-
-        RemoveProductFromCartCommandValidator.ValidateCart( cart );
 
         cart.RemoveProduct( command.ProductId );
 

@@ -14,11 +14,11 @@ public class GetProductQueryHandler
 
     public async Task<Product> Handle( GetProductQuery query )
     {
-        GetProductQueryValidator.ValidateProductId(query.ProductId);
+        GetProductQueryValidator.ValidateProductId( query.ProductId );
 
         Product product = await _productRepository.GetByIdAsync( query.ProductId );
 
-        GetProductQueryValidator.ValidateProduct(product);
+        GetProductQueryValidator.ValidateProduct( product );
 
         return product;
     }
