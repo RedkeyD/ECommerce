@@ -2,7 +2,8 @@
 
 public class Review
 {
-    public Guid Id { get; }
+    public long Id { get; }
+    public Guid PublicId { get; }
     public Guid ProductId { get; }
     public Guid UserId { get; }
     public int Rating { get; }
@@ -33,7 +34,7 @@ public class Review
             throw new ArgumentException( $"'{nameof( comment )}' cannot be null or empty.", nameof( comment ) );
         }
 
-        Id = Guid.NewGuid();
+        PublicId = Guid.NewGuid();
         ProductId = productId;
         UserId = userId;
         Rating = rating;

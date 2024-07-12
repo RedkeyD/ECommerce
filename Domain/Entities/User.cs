@@ -2,32 +2,57 @@
 
 public class User
 {
-    public Guid Id { get; }
-    public string Username { get; private set; }
-    public string Email { get; private set; }
-    public string PasswordHash { get; private set; }
+    public long Id { get; }
+    public Guid PublicId { get; }
     public ICollection<Order> Orders { get; }
-    public ICollection<UserRole> UserRoles { get; }
-    public Cart ShoppingCart { get; }
+    public Cart Cart { get; }
+    public string Username
+    {
+        get => _username;
+        private set
+        {
+            if ( string.IsNullOrWhiteSpace( value ) )
+            {
+                throw new ArgumentNullException( "Username can not be empty string" );
+            }
+
+            _username = value;
+        }
+    }
+    private string _username;
+    public string Email
+    {
+        get => _email;
+        private set
+        {
+            if ( string.IsNullOrWhiteSpace( value ) )
+            {
+                throw new ArgumentNullException( "email can not be empty string" );
+            }
+
+            _email = value;
+        }
+    }
+    private string _email;
+
+    public string PasswordHash
+    {
+        get => _passwordHash;
+        private set
+        {
+            if ( string.IsNullOrWhiteSpace( value ) )
+            {
+                throw new ArgumentNullException( "passwordHash can not be empty string" );
+            }
+
+            _passwordHash = value;
+        }
+    }
+    private string _passwordHash;
 
     public User( string username, string email, string passwordHash )
     {
-        if ( string.IsNullOrWhiteSpace( username ) )
-        {
-            throw new ArgumentException( $"'{nameof( username )}' cannot be null or empty.", nameof( username ) );
-        }
-
-        if ( string.IsNullOrWhiteSpace( email ) )
-        {
-            throw new ArgumentException( $"'{nameof( email )}' cannot be null or empty.", nameof( email ) );
-        }
-
-        if ( string.IsNullOrWhiteSpace( passwordHash ) )
-        {
-            throw new ArgumentException( $"'{nameof( passwordHash )}' cannot be null or empty.", nameof( passwordHash ) );
-        }
-
-        Id = Guid.NewGuid();
+        PublicId = Guid.NewGuid();
         Username = username;
         Email = email;
         PasswordHash = passwordHash;
@@ -35,31 +60,16 @@ public class User
 
     public void SetUsername( string username )
     {
-        if ( string.IsNullOrWhiteSpace( username ) )
-        {
-            throw new ArgumentException( $"'{nameof( username )}' cannot be null or empty.", nameof( username ) );
-        }
-
         Username = username;
     }
 
     public void SetEmail( string email )
     {
-        if ( string.IsNullOrWhiteSpace( email ) )
-        {
-            throw new ArgumentException( $"'{nameof( email )}' cannot be null or empty.", nameof( email ) );
-        }
-
         Email = email;
     }
 
     public void SetPasswordHash( string passwordHash )
     {
-        if ( string.IsNullOrWhiteSpace( passwordHash ) )
-        {
-            throw new ArgumentException( $"'{nameof( passwordHash )}' cannot be null or empty.", nameof( passwordHash ) );
-        }
-
         PasswordHash = passwordHash;
     }
 }

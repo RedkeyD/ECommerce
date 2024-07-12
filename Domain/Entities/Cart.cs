@@ -1,57 +1,62 @@
-﻿namespace Domain.Entities;
-
-public class Cart
+﻿namespace Domain.Entities
 {
-    public Guid Id { get; }
-    public Guid UserId { get; }
-    public DateTime CreatedDate { get; }
-    public ICollection<CartItem> CartItems { get; private set; }
-    public User User { get; }
-
-    public Cart( Guid userId )
+    public class Cart
     {
-        if ( userId == Guid.Empty )
+        public long id { get; }
+        public Guid PublicId { get; }
+        public Guid UserId { get; }
+        public DateTime CreatedDate { get; }
+        public ICollection<CartItem> CartItems { get; private set; }
+        public User User { get; }
+
+        public Cart( Guid userId )
         {
-            throw new ArgumentException( $"'{nameof( userId )}' cannot be null " );
+            if ( userId == Guid.Empty )
+            {
+                throw new ArgumentException( $"{nameof( userId )} can not be null " );
+            }
+
+            PublicId = Guid.NewGuid();
+            UserId = userId;
+            CreatedDate = DateTime.Now;
         }
 
-        Id = Guid.NewGuid();
-        UserId = userId;
-        CreatedDate = DateTime.Now;
-    }
-
-    public void AddProduct( Product product, int quantity )
-    {
-        CartItem existingItem = CartItems.FirstOrDefault( ci => ci.ProductId == product.Id );
-
-        if ( existingItem != null )
+        public void AddProduct( Product product )
         {
-            existingItem.SetQuantity( quantity );
-        }
-        else
-        {
-            CartItem cartItem = new CartItem( Id, product.Id, quantity );
+            if ( product == null )
+            {
+                throw new ArgumentException( $"{nameof( product )} can not be null" );
+            }
+
+            CartItem cartItem = new CartItem( PublicId, product.PublicId );
             CartItems.Add( cartItem );
         }
-    }
 
-    public void RemoveProduct( Guid productId )
-    {
-        CartItem item = CartItems.FirstOrDefault( ci => ci.ProductId == productId );
-
-        if ( item != null )
+        public void RemoveProduct( Guid productId )
         {
+            if ( productId == Guid.Empty )
+            {
+                throw new ArgumentException( $"{nameof( productId )} can not be empty" );
+            }
+
+            CartItem item = CartItems.FirstOrDefault( ci => ci.ProductId == productId );
+            if ( item == null )
+            {
+                throw new ArgumentException( $"{nameof( item )} item was not found" );
+            }
+
             CartItems.Remove( item );
         }
-    }
 
-    public void UpdateProductQuantity( Guid productId, int quantity )
-    {
-        CartItem item = CartItems.FirstOrDefault( ci => ci.ProductId == productId );
-
-        if ( item != null )
+        public void UpdateProductQuantity( Guid productId, int quantity )
         {
-            item.SetQuantity( quantity );
+            CartItem product = CartItems.FirstOrDefault( ci => ci.ProductId == productId );
+            if ( product == null )
+            {
+                throw new ArgumentException( $"{nameof( product )} product was not found" );
+            }
+
+            product.SetQuantity( quantity );
         }
     }
 }

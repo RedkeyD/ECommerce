@@ -2,7 +2,8 @@
 
 public class Product
 {
-    public Guid Id { get; }
+    public long Id { get; }
+    public Guid PublicId { get; }
     public string Name { get; }
     public string Description { get; }
     public decimal Price { get; }

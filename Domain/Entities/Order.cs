@@ -1,36 +1,38 @@
 ﻿using Domain.Enums;
 
-namespace Domain.Entities;
-
-public class Order
+namespace Domain.Entities
 {
-    public Guid Id { get; }
-    public Guid UserId { get; }
-    public DateTime OrderDate { get; }
-    public OrderStatus Status { get; private set; }
-    public User User { get; }
-    public ICollection<OrderItem> OrderItems { get; }
-
-    public Order( Guid userId )
+    public class Order
     {
-        if ( userId == Guid.Empty )
+        public long Id { get; }
+        public Guid PublicId { get; }
+        public Guid UserId { get; }
+        public DateTime OrderDate { get; }
+        public OrderStatus Status { get; private set; }
+        public User User { get; }
+        public ICollection<OrderItem> OrderItems { get; }
+
+        public Order( Guid userId )
         {
-            throw new ArgumentException( $"'{nameof( userId )}' cannot be null " );
+            if ( userId == Guid.Empty )
+            {
+                throw new ArgumentException( $"'{nameof( userId )}' cannot be null " );
+            }
+
+            PublicId = Guid.NewGuid();
+            UserId = userId;
+            OrderDate = DateTime.Now;
+            Status = OrderStatus.Created;
         }
 
-        Id = Guid.NewGuid();
-        UserId = userId;
-        OrderDate = DateTime.Now;
-        Status = OrderStatus.Created;
-    }
-
-    public void SetStatus( OrderStatus newStatus )
-    {
-        if ( newStatus != Status + 1 )
+        public void SetStatus( OrderStatus newStatus )
         {
-            throw new InvalidOperationException( $"Cannot transition from {Status} to {newStatus}" );
-        }
+            if ( newStatus != Status + 1 )
+            {
+                throw new InvalidOperationException( $"Cannot transition from {Status} to {newStatus}" );
+            }
 
-        Status = newStatus;
+            Status = newStatus;
+        }
     }
 }
