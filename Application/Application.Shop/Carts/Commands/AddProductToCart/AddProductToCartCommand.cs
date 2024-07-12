@@ -1,4 +1,7 @@
-﻿namespace Application.Carts.Commands.AddProductToCart
+﻿using Application.Abstractions.Messaging;
+using Application.Foundation.Result;
+
+namespace Application.Carts.Commands.AddProductToCart
 {
-    public sealed record AddProductToCartCommand( Guid CartId, Guid ProductId );
+    public sealed record AddProductToCartCommand( Guid CartId, Guid ProductId ) : ICommand<Result>;
 }

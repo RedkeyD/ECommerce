@@ -1,23 +1,30 @@
-﻿using Domain.Entities;
-
+﻿using Application.Abstractions.Validators;
+using Application.Foundation.Result;
 namespace Application.Users.Queries.GetUser
 {
-    public static class GetUserQueryValidator
+    public class GetUserQueryValidator : IAsyncValidator<GetUserQuery>
     {
-        public static void ValidateUserId( Guid userId )
+        private IUserRepository _userRepository;
+
+        public GetUserQueryValidator( IUserRepository userRepository )
         {
-            if ( userId == Guid.Empty )
-            {
-                throw new ArgumentException( "user ID cannot be empty", nameof( userId ) );
-            }
+            _userRepository = userRepository;
         }
 
-        public static void ValidateUser( User user )
+        public async Task<Result> ValidateAsync( GetUserQuery data )
         {
-            if ( user == null )
+            if ( data.UserId == default )
             {
-                throw new Exception( "user not found" );
+                return Result.Fail( new Error( "User cannot be empty", "Request.UserId" ) );
             }
+
+            bool isUserExists = await _userRepository.IsUserExistsAsync( data.UserId );
+            if ( !isUserExists )
+            {
+                return Result.Fail( new Error( "User with this id is not exists", "Request.UserId" ) );
+            }
+
+            return Result.Ok();
         }
     }
 }

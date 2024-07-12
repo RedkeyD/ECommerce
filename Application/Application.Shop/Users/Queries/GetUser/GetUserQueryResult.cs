@@ -1,17 +1,10 @@
-﻿using Domain.Entities;
-using MediatR;
+﻿using Application.Foundation.Result;
+using Application.Shop.Users.Dtos;
 
 namespace Application.Users.Queries.GetUser
 {
-    public class GetUserQuery : IRequest<User>
+    public class GetUserQueryResult : Result<GetUserQueryResult, UserDto>
     {
-        public Guid UserId { get; }
 
-        public GetUserQuery( Guid userId )
-        {
-            GetUserQueryValidator.ValidateUserId( userId );
-
-            UserId = userId;
-        }
     }
 }

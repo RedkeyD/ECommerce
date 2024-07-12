@@ -1,17 +1,9 @@
-﻿using Domain.Entities;
-using MediatR;
+﻿using Application.Foundation.Result;
+using Application.Shop.Orders.Dtos;
 
 namespace Application.Orders.Queries.GetOrder
 {
-    public class GetOrderQuery : IRequest<Order>
+    public class GetOrderQueryResult : Result<GetOrderQueryResult, OrderDto>
     {
-        public Guid OrderId { get; }
-
-        public GetOrderQuery( Guid orderId )
-        {
-            GetOrderQueryValidator.ValidateOrderId( orderId );
-
-            OrderId = orderId;
-        }
     }
 }

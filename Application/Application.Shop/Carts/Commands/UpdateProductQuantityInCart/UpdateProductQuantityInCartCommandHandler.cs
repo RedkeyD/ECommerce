@@ -1,11 +1,12 @@
 ﻿using Application.Abstractions;
+using Application.Abstractions.Messaging;
 using Application.Abstractions.Validators;
 using Application.Foundation.Result;
 using Domain.Entities;
 
 namespace Application.Carts.Commands.UpdateProductQuantityInCart
 {
-    public class UpdateProductQuantityInCartCommandHandler
+    public class UpdateProductQuantityInCartCommandHandler : ICommandHandler<UpdateProductQuantityInCartCommand, Result>
     {
         private readonly ICartRepository _cartRepository;
         private readonly IAsyncValidator<UpdateProductQuantityInCartCommand> _validator;

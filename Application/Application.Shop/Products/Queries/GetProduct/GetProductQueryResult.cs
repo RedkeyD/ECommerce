@@ -1,17 +1,10 @@
-﻿using Domain.Entities;
-using MediatR;
+﻿using Application.Foundation.Result;
+using Application.Shop.Products.Dtos;
 
 namespace Application.Products.Queries.GetProduct
 {
-    public class GetProductQuery : IRequest<Product>
+    public class GetProductQueryResult : Result<GetProductQueryResult, ProductDto>
     {
-        public Guid ProductId { get; }
 
-        public GetProductQuery( Guid productId )
-        {
-            GetProductQueryValidator.ValidateProductId( productId );
-
-            ProductId = productId;
-        }
     }
 }

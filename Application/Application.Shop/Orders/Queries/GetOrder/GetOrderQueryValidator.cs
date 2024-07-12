@@ -1,23 +1,31 @@
-﻿using Domain.Entities;
+﻿using Application.Abstractions.Validators;
+using Application.Foundation.Result;
 
 namespace Application.Orders.Queries.GetOrder
 {
-    public static class GetOrderQueryValidator
+    public class GetOrderQueryValidator : IAsyncValidator<GetOrderQuery>
     {
-        public static void ValidateOrderId( Guid orderId )
+        private IOrderRepository _orderRepository;
+
+        public GetOrderQueryValidator( IOrderRepository orderRepository )
         {
-            if ( orderId == Guid.Empty )
-            {
-                throw new ArgumentException( "category ID cannot be empty", nameof( orderId ) );
-            }
+            _orderRepository = orderRepository;
         }
 
-        public static void ValidateOrder( Order order )
+        public async Task<Result> ValidateAsync( GetOrderQuery data )
         {
-            if ( order == null )
+            if ( data.OrderId == default )
             {
-                throw new Exception( "order not found" );
+                return Result.Fail( new Error( "Order cannot be empty", "Request.OrderId" ) );
             }
+
+            bool isOrderExists = await _orderRepository.IsOrderExistsAsync( data.OrderId );
+            if ( !isOrderExists )
+            {
+                return Result.Fail( new Error( "Order with this id is not exists", "Request.OrderId" ) );
+            }
+
+            return Result.Ok();
         }
     }
 }

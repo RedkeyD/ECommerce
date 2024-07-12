@@ -1,23 +1,31 @@
-﻿using Domain.Entities;
+﻿using Application.Abstractions.Validators;
+using Application.Foundation.Result;
 
 namespace Application.Products.Queries.GetProduct
 {
-    public static class GetProductQueryValidator
+    public class GetProductQueryValidator : IAsyncValidator<GetProductQuery>
     {
-        public static void ValidateProductId( Guid productId )
+        private IProductRepository _productRepository;
+
+        public GetProductQueryValidator( IProductRepository productRepository )
         {
-            if ( productId == Guid.Empty )
-            {
-                throw new ArgumentException( "product ID cannot be empty", nameof( productId ) );
-            }
+            _productRepository = productRepository;
         }
 
-        public static void ValidateProduct( Product product )
+        public async Task<Result> ValidateAsync( GetProductQuery data )
         {
-            if ( product == null )
+            if ( data.ProductId == default )
             {
-                throw new Exception( "product not found" );
+                return Result.Fail( new Error( "Product cannot be empty", "Request.ProductId" ) );
             }
+
+            bool isProductExists = await _productRepository.IsProductExistsAsync( data.ProductId );
+            if ( !isProductExists )
+            {
+                return Result.Fail( new Error( "Product with this id is not exists", "Request.ProductId" ) );
+            }
+
+            return Result.Ok();
         }
     }
 }

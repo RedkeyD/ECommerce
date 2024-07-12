@@ -1,75 +1,76 @@
-﻿namespace Domain.Entities;
-
-public class User
+﻿namespace Domain.Entities
 {
-    public long Id { get; }
-    public Guid PublicId { get; }
-    public ICollection<Order> Orders { get; }
-    public Cart Cart { get; }
-    public string Username
+    public class User
     {
-        get => _username;
-        private set
+        public long Id { get; }
+        public Guid PublicId { get; }
+        public ICollection<Order> Orders { get; }
+        public Cart Cart { get; }
+        public string Username
         {
-            if ( string.IsNullOrWhiteSpace( value ) )
+            get => _username;
+            private set
             {
-                throw new ArgumentNullException( "Username can not be empty string" );
-            }
+                if ( string.IsNullOrWhiteSpace( value ) )
+                {
+                    throw new ArgumentNullException( "Username can not be empty string" );
+                }
 
-            _username = value;
+                _username = value;
+            }
         }
-    }
-    private string _username;
-    public string Email
-    {
-        get => _email;
-        private set
+        private string _username;
+        public string Email
         {
-            if ( string.IsNullOrWhiteSpace( value ) )
+            get => _email;
+            private set
             {
-                throw new ArgumentNullException( "email can not be empty string" );
+                if ( string.IsNullOrWhiteSpace( value ) )
+                {
+                    throw new ArgumentNullException( "email can not be empty string" );
+                }
+
+                _email = value;
             }
-
-            _email = value;
         }
-    }
-    private string _email;
+        private string _email;
 
-    public string PasswordHash
-    {
-        get => _passwordHash;
-        private set
+        public string PasswordHash
         {
-            if ( string.IsNullOrWhiteSpace( value ) )
+            get => _passwordHash;
+            private set
             {
-                throw new ArgumentNullException( "passwordHash can not be empty string" );
+                if ( string.IsNullOrWhiteSpace( value ) )
+                {
+                    throw new ArgumentNullException( "passwordHash can not be empty string" );
+                }
+
+                _passwordHash = value;
             }
-
-            _passwordHash = value;
         }
-    }
-    private string _passwordHash;
+        private string _passwordHash;
 
-    public User( string username, string email, string passwordHash )
-    {
-        PublicId = Guid.NewGuid();
-        Username = username;
-        Email = email;
-        PasswordHash = passwordHash;
-    }
+        public User( string username, string email, string passwordHash )
+        {
+            PublicId = Guid.NewGuid();
+            Username = username;
+            Email = email;
+            PasswordHash = passwordHash;
+        }
 
-    public void SetUsername( string username )
-    {
-        Username = username;
-    }
+        public void SetUsername( string username )
+        {
+            Username = username;
+        }
 
-    public void SetEmail( string email )
-    {
-        Email = email;
-    }
+        public void SetEmail( string email )
+        {
+            Email = email;
+        }
 
-    public void SetPasswordHash( string passwordHash )
-    {
-        PasswordHash = passwordHash;
+        public void SetPasswordHash( string passwordHash )
+        {
+            PasswordHash = passwordHash;
+        }
     }
 }

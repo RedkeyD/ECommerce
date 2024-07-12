@@ -3,7 +3,7 @@ using Application.Shop.Categories.Dtos;
 
 namespace Application.Categories.Queries.GetCategory
 {
-    public class GetCategoryQueryResult : Result<GetCategoryQueryResult, IReadOnlyList<CategoryDto>>
+    public class GetCategoryQueryResult : Result<GetCategoryQueryResult, CategoryDto>
     {
     }
 }

@@ -1,17 +1,9 @@
-﻿using Domain.Entities;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
 
 namespace Application.Users.Queries.GetUser
 {
-    public class GetUserQuery : IRequest<User>
+    public class GetUserQuery : IQuery<GetUserQueryResult>
     {
         public Guid UserId { get; }
-
-        public GetUserQuery( Guid userId )
-        {
-            GetUserQueryValidator.ValidateUserId( userId );
-
-            UserId = userId;
-        }
     }
 }

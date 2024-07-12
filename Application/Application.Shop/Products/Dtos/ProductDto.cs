@@ -6,7 +6,7 @@ namespace Application.Shop.Products.Dtos
         string Name,
         string Description,
         decimal Price,
-        string imageUrl,
+        string ImageUrl,
         Category Category,
         ICollection<Review> Reviews );
 }

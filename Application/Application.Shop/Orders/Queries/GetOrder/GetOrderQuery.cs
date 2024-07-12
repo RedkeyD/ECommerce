@@ -1,17 +1,9 @@
-﻿using Domain.Entities;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
 
 namespace Application.Orders.Queries.GetOrder
 {
-    public class GetOrderQuery : IRequest<Order>
+    public class GetOrderQuery : IQuery<GetOrderQueryResult>
     {
-        public Guid OrderId { get; }
-
-        public GetOrderQuery( Guid orderId )
-        {
-            GetOrderQueryValidator.ValidateOrderId( orderId );
-
-            OrderId = orderId;
-        }
+        public Guid OrderId { get; set; }
     }
 }

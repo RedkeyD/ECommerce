@@ -1,11 +1,13 @@
-﻿using Application.Abstractions.Validators;
+﻿using Application.Abstractions.Messaging;
+using Application.Abstractions.Validators;
 using Application.Foundation.Result;
 using Application.Shop.Carts.Dtos;
+using Application.Shop.Carts.Extensions;
 using Domain.Entities;
 
 namespace Application.Carts.Queries.GetCart
 {
-    public class GetCartQueryHandler
+    public class GetCartQueryHandler : IQueryHandler<GetCartQuery, GetCartQueryResult>
     {
         private readonly ICartRepository _repository;
         private readonly IAsyncValidator<GetCartQuery> _queryValidator;

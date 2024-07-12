@@ -1,23 +1,31 @@
-﻿using Domain.Entities;
+﻿using Application.Abstractions.Validators;
+using Application.Foundation.Result;
 
 namespace Application.Categories.Queries.GetCategory
 {
-    public static class GetCategoryQueryValidator
+    public class GetCategoryQueryValidator : IAsyncValidator<GetCategoryQuery>
     {
-        public static void ValidateCategoryId( Guid categoryId )
+        private ICategoryRepository _categoryRepository;
+
+        public GetCategoryQueryValidator( ICategoryRepository categoryRepository )
         {
-            if ( categoryId == Guid.Empty )
-            {
-                throw new ArgumentException( "category ID cannot be empty", nameof( categoryId ) );
-            }
+            _categoryRepository = categoryRepository;
         }
 
-        public static void ValidateCategory( Category category )
+        public async Task<Result> ValidateAsync( GetCategoryQuery data )
         {
-            if ( category == null )
+            if ( data.CategoryId == default )
             {
-                throw new Exception( "category not found" );
+                return Result.Fail( new Error( "Category cannot be empty", "Request.CartId" ) );
             }
+
+            bool isCategoryExists = await _categoryRepository.IsCategoryExistsAsync( data.CategoryId );
+            if ( !isCategoryExists )
+            {
+                return Result.Fail( new Error( "Category with this id is not exists", "Request.CartId" ) );
+            }
+
+            return Result.Ok();
         }
     }
 }

@@ -1,11 +1,12 @@
 ﻿using Application.Abstractions;
+using Application.Abstractions.Messaging;
 using Application.Abstractions.Validators;
 using Application.Foundation.Result;
 using Domain.Entities;
 
 namespace Application.Carts.Commands.RemoveProductFromCart
 {
-    public class RemoveProductFromCartCommandHandler
+    public class RemoveProductFromCartCommandHandler : ICommandHandler<RemoveProductFromCartCommand, Result>
     {
         private readonly ICartRepository _cartRepository;
         private readonly IAsyncValidator<RemoveProductFromCartCommand> _validator;

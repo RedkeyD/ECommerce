@@ -3,7 +3,7 @@ using Application.Shop.Carts.Dtos;
 
 namespace Application.Carts.Queries.GetCart
 {
-    public class GetCartQueryResult : Result<GetCartQueryResult, IReadOnlyList<CartDto>>
+    public class GetCartQueryResult : Result<GetCartQueryResult, CartDto>
     {
 
     }

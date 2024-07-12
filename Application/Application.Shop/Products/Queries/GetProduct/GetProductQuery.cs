@@ -1,17 +1,9 @@
-﻿using Domain.Entities;
-using MediatR;
+﻿using Application.Abstractions.Messaging;
 
 namespace Application.Products.Queries.GetProduct
 {
-    public class GetProductQuery : IRequest<Product>
+    public class GetProductQuery : IQuery<GetProductQueryResult>
     {
-        public Guid ProductId { get; }
-
-        public GetProductQuery( Guid productId )
-        {
-            GetProductQueryValidator.ValidateProductId( productId );
-
-            ProductId = productId;
-        }
+        public Guid ProductId { get; set; }
     }
 }

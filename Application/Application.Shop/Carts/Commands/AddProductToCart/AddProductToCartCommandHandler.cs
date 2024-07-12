@@ -1,4 +1,5 @@
 ﻿using Application.Abstractions;
+using Application.Abstractions.Messaging;
 using Application.Abstractions.Validators;
 using Application.Foundation.Result;
 using Application.Products;
@@ -6,8 +7,7 @@ using Domain.Entities;
 
 namespace Application.Carts.Commands.AddProductToCart
 {
-
-    public class AddProductToCartCommandHandler
+    public class AddProductToCartCommandHandler : ICommandHandler<AddProductToCartCommand, Result>
     {
         private readonly ICartRepository _cartRepository;
         private readonly IProductRepository _productRepository;
