@@ -56,6 +56,7 @@
             Username = username;
             Email = email;
             PasswordHash = passwordHash;
+            Orders = new List<Order>();
         }
 
         public void SetUsername( string username )

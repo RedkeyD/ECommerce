@@ -10,6 +10,10 @@ namespace Infrastructure.Foundation.EntityFramework.Configurations
         {
             builder.HasKey( u => u.Id );
 
+            builder.Property( u => u.Username ).HasMaxLength( 20 ).IsRequired();
+            builder.Property( u => u.Email ).HasMaxLength( 50 ).IsRequired();
+            builder.Property( u => u.PasswordHash ).HasMaxLength( 50 ).IsRequired();
+
             builder
                 .HasOne( u => u.Cart )
                 .WithOne( c => c.User )
