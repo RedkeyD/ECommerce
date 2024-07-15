@@ -1,11 +1,11 @@
-﻿using Domain.Entities;
+﻿using Application.Abstractions.Repositories;
+using Domain.Entities;
 
 namespace Application.Carts
 {
-    public interface ICartRepository
+    public interface ICartRepository : IAddRepository<Cart>, IUpdateRepository<Cart>, IRemoveRepository<Cart>
     {
         Task<bool> IsCartExistsAsync( Guid CartPublicId );
         Task<Cart> GetByIdAsync( Guid cartId );
-        Task UpdateAsync( Cart cart );
     }
 }

@@ -14,7 +14,7 @@ namespace Application.Carts.Queries.GetCart
 
         public async Task<Result> ValidateAsync( GetCartQuery data )
         {
-            if ( data.CartId == default )
+            if ( data.CartId == Guid.Empty )
             {
                 return Result.Fail( new Error( "Cart cannot be empty", "Request.CartId" ) );
             }

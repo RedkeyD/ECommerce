@@ -31,9 +31,9 @@ namespace Application.Carts.Commands.RemoveProductFromCart
 
             Cart cart = await _cartRepository.GetByIdAsync( command.CartId );
 
-            cart.RemoveProduct( command.ProductId );
+            _cartRepository.Remove( cart );
 
-            await _cartRepository.UpdateAsync( cart );
+            await _unitOfWork.CommitAsync();
 
             return Result.Ok();
         }

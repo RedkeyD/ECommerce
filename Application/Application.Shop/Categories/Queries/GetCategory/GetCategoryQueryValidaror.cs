@@ -14,7 +14,7 @@ namespace Application.Categories.Queries.GetCategory
 
         public async Task<Result> ValidateAsync( GetCategoryQuery data )
         {
-            if ( data.CategoryId == default )
+            if ( data.CategoryId == Guid.Empty )
             {
                 return Result.Fail( new Error( "Category cannot be empty", "Request.CartId" ) );
             }

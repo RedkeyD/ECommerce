@@ -16,6 +16,11 @@
                     throw new ArgumentNullException( "Username can not be empty string" );
                 }
 
+                if (value.Length > 20)
+                {
+                    throw new ArgumentException( "Username can only have 20 characters" );
+                }
+
                 _username = value;
             }
         }
@@ -28,6 +33,11 @@
                 if ( string.IsNullOrWhiteSpace( value ) )
                 {
                     throw new ArgumentNullException( "email can not be empty string" );
+                }
+
+                if ( value.Length > 50 )
+                {
+                    throw new ArgumentException( "email can only have 50 characters" );
                 }
 
                 _email = value;
@@ -43,6 +53,11 @@
                 if ( string.IsNullOrWhiteSpace( value ) )
                 {
                     throw new ArgumentNullException( "passwordHash can not be empty string" );
+                }
+
+                if ( value.Length > 50 )
+                {
+                    throw new ArgumentException( "passwordHash can only have 50 characters" );
                 }
 
                 _passwordHash = value;

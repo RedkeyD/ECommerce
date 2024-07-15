@@ -31,10 +31,11 @@ namespace Application.Carts.Commands.UpdateProductQuantityInCart
             }
 
             Cart cart = await _cartRepository.GetByIdAsync( command.CartId );
-
             cart.UpdateProductQuantity( command.ProductId, command.Quantity );
 
-            await _cartRepository.UpdateAsync( cart );
+            _cartRepository.Update(cart);
+
+            await _unitOfWork.CommitAsync();
 
             return Result.Ok();
         }

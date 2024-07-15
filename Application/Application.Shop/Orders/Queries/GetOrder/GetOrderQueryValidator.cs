@@ -14,7 +14,7 @@ namespace Application.Orders.Queries.GetOrder
 
         public async Task<Result> ValidateAsync( GetOrderQuery data )
         {
-            if ( data.OrderId == default )
+            if ( data.OrderId == Guid.Empty )
             {
                 return Result.Fail( new Error( "Order cannot be empty", "Request.OrderId" ) );
             }

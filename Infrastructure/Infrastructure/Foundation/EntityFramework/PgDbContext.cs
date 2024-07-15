@@ -1,5 +1,12 @@
 ﻿using Domain.Entities;
-using Infrastructure.Foundation.EntityFramework.Configurations;
+using Infrastructure.CartItems;
+using Infrastructure.Carts;
+using Infrastructure.Categories;
+using Infrastructure.OrderItems;
+using Infrastructure.Orders;
+using Infrastructure.Products;
+using Infrastructure.Reviews;
+using Infrastructure.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Foundation.EntityFramework

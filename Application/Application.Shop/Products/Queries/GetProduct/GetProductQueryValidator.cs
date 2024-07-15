@@ -14,7 +14,7 @@ namespace Application.Products.Queries.GetProduct
 
         public async Task<Result> ValidateAsync( GetProductQuery data )
         {
-            if ( data.ProductId == default )
+            if ( data.ProductId == Guid.Empty )
             {
                 return Result.Fail( new Error( "Product cannot be empty", "Request.ProductId" ) );
             }
