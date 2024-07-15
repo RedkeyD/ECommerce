@@ -1,5 +1,6 @@
 ﻿using Application.Abstractions.Validators;
 using Application.Foundation.Result;
+
 namespace Application.Users.Queries.GetUser
 {
     public class GetUserQueryValidator : IAsyncValidator<GetUserQuery>
