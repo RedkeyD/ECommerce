@@ -11,6 +11,8 @@ namespace Infrastructure.Reviews
             builder.HasKey( r => r.Id );
             builder.HasAlternateKey( r => r.PublicId );
 
+            builder.Property( r => r.Id ).HasColumnName( "id" );
+            builder.Property( r => r.PublicId ).HasColumnName( "public_id" );
             builder.Property( r => r.ProductId ).HasColumnName( "product_id" ).IsRequired();
             builder.Property( r => r.UserId ).HasColumnName( "user_id" ).IsRequired();
             builder.Property( r => r.Rating ).HasColumnName( "rating" ).IsRequired();

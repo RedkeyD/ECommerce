@@ -11,6 +11,9 @@ namespace Infrastructure.Carts
             builder.HasKey( c => c.Id );
             builder.HasAlternateKey( c => c.PublicId );
 
+
+            builder.Property( c => c.Id ).HasColumnName( "id" );
+            builder.Property( c => c.PublicId ).HasColumnName( "public_id" );
             builder.Property( c => c.UserId ).HasColumnName( "user_id" ).IsRequired();
             builder.Property( c => c.CreatedDate ).HasColumnName( "created_date" ).IsRequired();
 
