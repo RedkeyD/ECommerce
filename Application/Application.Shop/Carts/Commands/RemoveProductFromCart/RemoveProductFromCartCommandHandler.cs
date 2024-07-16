@@ -36,7 +36,7 @@ namespace Application.Carts.Commands.RemoveProductFromCart
             Cart cart = await _cartRepository.GetByIdAsync( command.CartId );
             Product product = await _productRepository.GetByIdAsync( command.ProductId );
 
-            _cartRepository.Remove( cart );
+            _cartRepository.Remove( product );
 
             await _unitOfWork.CommitAsync();
 
