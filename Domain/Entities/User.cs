@@ -16,7 +16,7 @@
                     throw new ArgumentNullException( "Username can not be empty string" );
                 }
 
-                if (value.Length > 20)
+                if ( value.Length > 20 )
                 {
                     throw new ArgumentException( "Username can only have 20 characters" );
                 }

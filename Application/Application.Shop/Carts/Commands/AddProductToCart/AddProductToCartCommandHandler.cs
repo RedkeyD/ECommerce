@@ -37,9 +37,9 @@ namespace Application.Carts.Commands.AddProductToCart
             Cart cart = await _cartRepository.GetByIdAsync( command.CartId );
             Product product = await _productRepository.GetByIdAsync( command.ProductId );
 
-            _cartRepository.Add(product);
+            _cartRepository.Add( product );
 
-            await _unitOfWork.CommitAsync( );
+            await _unitOfWork.CommitAsync();
 
             return Result.Ok();
         }
