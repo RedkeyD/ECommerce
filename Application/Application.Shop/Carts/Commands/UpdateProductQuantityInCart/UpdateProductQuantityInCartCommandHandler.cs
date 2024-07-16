@@ -31,9 +31,6 @@ namespace Application.Carts.Commands.UpdateProductQuantityInCart
             }
 
             Cart cart = await _cartRepository.GetByIdAsync( command.CartId );
-            cart.UpdateProductQuantity( command.ProductId, command.Quantity );
-
-            _cartRepository.Update(cart);
 
             await _unitOfWork.CommitAsync();
 

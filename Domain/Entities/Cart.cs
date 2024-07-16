@@ -20,43 +20,5 @@
             UserId = userId;
             CreatedDate = DateTime.Now;
         }
-
-        public void AddProduct( Product product )
-        {
-            if ( product == null )
-            {
-                throw new ArgumentException( $"{nameof( product )} can not be null" );
-            }
-
-            CartItem cartItem = new CartItem( PublicId, product.PublicId );
-            CartItems.Add( cartItem );
-        }
-
-        public void RemoveProduct( Guid productId )
-        {
-            if ( productId == Guid.Empty )
-            {
-                throw new ArgumentException( $"{nameof( productId )} can not be empty" );
-            }
-
-            CartItem item = CartItems.FirstOrDefault( ci => ci.ProductId == productId );
-            if ( item == null )
-            {
-                throw new ArgumentException( $"{nameof( item )} item was not found" );
-            }
-
-            CartItems.Remove( item );
-        }
-
-        public void UpdateProductQuantity( Guid productId, int quantity )
-        {
-            CartItem product = CartItems.FirstOrDefault( ci => ci.ProductId == productId );
-            if ( product == null )
-            {
-                throw new ArgumentException( $"{nameof( product )} product was not found" );
-            }
-
-            product.SetQuantity( quantity );
-        }
     }
 }

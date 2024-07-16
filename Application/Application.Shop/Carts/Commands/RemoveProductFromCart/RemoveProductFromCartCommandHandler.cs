@@ -2,6 +2,7 @@
 using Application.Abstractions.Messaging;
 using Application.Abstractions.Validators;
 using Application.Foundation.Result;
+using Application.Products;
 using Domain.Entities;
 
 namespace Application.Carts.Commands.RemoveProductFromCart
@@ -9,15 +10,18 @@ namespace Application.Carts.Commands.RemoveProductFromCart
     public class RemoveProductFromCartCommandHandler : ICommandHandler<RemoveProductFromCartCommand, Result>
     {
         private readonly ICartRepository _cartRepository;
+        private readonly IProductRepository _productRepository;
         private readonly IAsyncValidator<RemoveProductFromCartCommand> _validator;
         private readonly IUnitOfWork _unitOfWork;
 
         public RemoveProductFromCartCommandHandler(
             ICartRepository cartRepository,
+            IProductRepository productRepository,
             IAsyncValidator<RemoveProductFromCartCommand> validator,
             IUnitOfWork unitOfWork )
         {
             _cartRepository = cartRepository;
+            _productRepository = productRepository;
             _validator = validator;
             _unitOfWork = unitOfWork;
         }
@@ -30,6 +34,7 @@ namespace Application.Carts.Commands.RemoveProductFromCart
             }
 
             Cart cart = await _cartRepository.GetByIdAsync( command.CartId );
+            Product product = await _productRepository.GetByIdAsync( command.ProductId );
 
             _cartRepository.Remove( cart );
 
