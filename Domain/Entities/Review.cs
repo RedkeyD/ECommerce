@@ -1,43 +1,45 @@
-﻿namespace Domain.Entities;
-
-public class Review
+﻿namespace Domain.Entities
 {
-    public Guid Id { get; }
-    public Guid ProductId { get; }
-    public Guid UserId { get; }
-    public int Rating { get; }
-    public string Comment { get; }
-    public DateTime ReviewDate { get; }
-    public Product Product { get; }
-    public User User { get; }
-
-    public Review( Guid productId, Guid userId, int rating, string comment )
+    public class Review
     {
-        if ( userId == Guid.Empty )
-        {
-            throw new ArgumentException( $"'{nameof( userId )}' cannot be null " );
-        }
+        public long Id { get; }
+        public Guid PublicId { get; }
+        public Guid ProductId { get; }
+        public Guid UserId { get; }
+        public int Rating { get; }
+        public string Comment { get; }
+        public DateTime ReviewDate { get; }
+        public Product Product { get; }
+        public User User { get; }
 
-        if ( productId == Guid.Empty )
+        public Review( Guid productId, Guid userId, int rating, string comment )
         {
-            throw new ArgumentException( $"'{nameof( productId )}' cannot be null " );
-        }
+            if ( userId == Guid.Empty )
+            {
+                throw new ArgumentException( $"'{nameof( userId )}' cannot be null " );
+            }
 
-        if ( rating < 1 || rating > 5 )
-        {
-            throw new ArgumentException( $"'{nameof( rating )}' must be between 1 and 5.", nameof( rating ) );
-        }
+            if ( productId == Guid.Empty )
+            {
+                throw new ArgumentException( $"'{nameof( productId )}' cannot be null " );
+            }
 
-        if ( string.IsNullOrWhiteSpace( comment ) )
-        {
-            throw new ArgumentException( $"'{nameof( comment )}' cannot be null or empty.", nameof( comment ) );
-        }
+            if ( rating < 1 || rating > 5 )
+            {
+                throw new ArgumentException( $"'{nameof( rating )}' must be between 1 and 5.", nameof( rating ) );
+            }
 
-        Id = Guid.NewGuid();
-        ProductId = productId;
-        UserId = userId;
-        Rating = rating;
-        Comment = comment;
-        ReviewDate = DateTime.Now;
+            if ( string.IsNullOrWhiteSpace( comment ) )
+            {
+                throw new ArgumentException( $"'{nameof( comment )}' cannot be null or empty.", nameof( comment ) );
+            }
+
+            PublicId = Guid.NewGuid();
+            ProductId = productId;
+            UserId = userId;
+            Rating = rating;
+            Comment = comment;
+            ReviewDate = DateTime.Now;
+        }
     }
 }

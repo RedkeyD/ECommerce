@@ -14,7 +14,7 @@ public class UserRole
             throw new ArgumentException( $"'{nameof( userId )}' cannot be null " );
         }
 
-        if (string.IsNullOrWhiteSpace(roleId))
+        if ( string.IsNullOrWhiteSpace( roleId ) )
         {
             throw new ArgumentException( $"'{nameof( roleId )}' cannot be empty " );
         }
