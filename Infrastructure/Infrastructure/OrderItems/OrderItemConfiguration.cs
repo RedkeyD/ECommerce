@@ -8,6 +8,8 @@ namespace Infrastructure.OrderItems
     {
         public void Configure( EntityTypeBuilder<OrderItem> builder )
         {
+            builder.ToTable( "order_item" );
+
             builder.HasKey( oi => oi.Id );
             builder.HasAlternateKey( oi => oi.PublicId );
 

@@ -8,6 +8,8 @@ namespace Infrastructure.CartItems
     {
         public void Configure( EntityTypeBuilder<CartItem> builder )
         {
+            builder.ToTable( "cart_item" );
+
             builder.HasKey( ci => ci.Id );
             builder.HasAlternateKey( ci => ci.PublicId );
 

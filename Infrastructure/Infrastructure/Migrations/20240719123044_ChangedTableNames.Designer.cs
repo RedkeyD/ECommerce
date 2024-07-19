@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(PgDbContext))]
-    [Migration("20240717133930_Initial")]
-    partial class Initial
+    [Migration("20240719123044_ChangedTableNames")]
+    partial class ChangedTableNames
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,7 +53,7 @@ namespace Infrastructure.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Carts");
+                    b.ToTable("cart", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.CartItem", b =>
@@ -89,7 +89,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("CartItems");
+                    b.ToTable("cart_item", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Category", b =>
@@ -121,7 +121,7 @@ namespace Infrastructure.Migrations
 
                     b.HasAlternateKey("PublicId");
 
-                    b.ToTable("Categories");
+                    b.ToTable("category", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Order", b =>
@@ -155,7 +155,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("order", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.OrderItem", b =>
@@ -200,7 +200,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderItems");
+                    b.ToTable("order_item", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Product", b =>
@@ -247,7 +247,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("product", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Review", b =>
@@ -293,7 +293,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("review", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.User", b =>
@@ -331,7 +331,7 @@ namespace Infrastructure.Migrations
 
                     b.HasAlternateKey("PublicId");
 
-                    b.ToTable("Users");
+                    b.ToTable("user", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Entities.Cart", b =>

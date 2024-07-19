@@ -8,6 +8,8 @@ namespace Infrastructure.Categories
     {
         public void Configure( EntityTypeBuilder<Category> builder )
         {
+            builder.ToTable( "category" );
+
             builder.HasKey( c => c.Id );
             builder.HasAlternateKey( c => c.PublicId );
 

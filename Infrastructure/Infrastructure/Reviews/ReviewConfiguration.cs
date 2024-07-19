@@ -8,6 +8,8 @@ namespace Infrastructure.Reviews
     {
         public void Configure( EntityTypeBuilder<Review> builder )
         {
+            builder.ToTable( "review" );
+
             builder.HasKey( r => r.Id );
             builder.HasAlternateKey( r => r.PublicId );
 

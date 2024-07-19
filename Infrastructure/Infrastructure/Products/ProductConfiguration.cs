@@ -8,6 +8,8 @@ namespace Infrastructure.Products
     {
         public void Configure( EntityTypeBuilder<Product> builder )
         {
+            builder.ToTable( "product" );
+
             builder.HasKey( p => p.Id );
             builder.HasAlternateKey( p => p.PublicId );
 
