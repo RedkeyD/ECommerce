@@ -11,8 +11,8 @@ namespace Infrastructure.Products
             builder.HasKey( p => p.Id );
             builder.HasAlternateKey( p => p.PublicId );
 
-            builder.Property( p => p.Id ).HasColumnName( "id" );
-            builder.Property( p => p.PublicId ).HasColumnName( "public_id" );
+            builder.Property( p => p.Id ).HasColumnName( "id" ).IsRequired();
+            builder.Property( p => p.PublicId ).HasColumnName( "public_id" ).IsRequired();
             builder.Property( p => p.Name ).HasColumnName( "name" ).HasMaxLength( 20 ).IsRequired();
             builder.Property( p => p.Description ).HasColumnName( "description" ).HasMaxLength( 1500 );
             builder.Property( p => p.Price ).HasColumnName( "price" ).IsRequired();

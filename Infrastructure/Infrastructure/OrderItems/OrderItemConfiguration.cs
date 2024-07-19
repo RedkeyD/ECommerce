@@ -11,9 +11,8 @@ namespace Infrastructure.OrderItems
             builder.HasKey( oi => oi.Id );
             builder.HasAlternateKey( oi => oi.PublicId );
 
-
-            builder.Property( oi => oi.Id ).HasColumnName( "id" );
-            builder.Property( oi => oi.PublicId ).HasColumnName( "public_id" );
+            builder.Property( oi => oi.Id ).HasColumnName( "id" ).IsRequired();
+            builder.Property( oi => oi.PublicId ).HasColumnName( "public_id" ).IsRequired();
             builder.Property( oi => oi.OrderId ).HasColumnName( "order_id" ).IsRequired();
             builder.Property( oi => oi.ProductId ).HasColumnName( "product_id" ).IsRequired();
             builder.Property( oi => oi.Quantity ).HasColumnName( "quantity" ).IsRequired();

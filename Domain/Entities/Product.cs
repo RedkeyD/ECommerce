@@ -7,7 +7,7 @@
         public string Name { get; }
         public string Description { get; }
         public decimal Price { get; }
-        public Guid CategoryId { get; }
+        public long CategoryId { get; }
         public string ImageUrl { get; }
         public Category Category { get; }
         public ICollection<Review> Reviews { get; }

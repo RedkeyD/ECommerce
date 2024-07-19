@@ -4,22 +4,22 @@
     {
         public long Id { get; }
         public Guid PublicId { get; }
-        public Guid ProductId { get; }
-        public Guid UserId { get; }
+        public long ProductId { get; }
+        public long UserId { get; }
         public int Rating { get; }
         public string Comment { get; }
         public DateTime ReviewDate { get; }
         public Product Product { get; }
         public User User { get; }
 
-        public Review( Guid productId, Guid userId, int rating, string comment )
+        public Review( long productId, long userId, int rating, string comment )
         {
-            if ( userId == Guid.Empty )
+            if ( userId == null )
             {
                 throw new ArgumentException( $"'{nameof( userId )}' cannot be null " );
             }
 
-            if ( productId == Guid.Empty )
+            if ( productId == null )
             {
                 throw new ArgumentException( $"'{nameof( productId )}' cannot be null " );
             }
