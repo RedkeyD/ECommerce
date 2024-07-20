@@ -4,14 +4,14 @@
     {
         public long Id { get; }
         public Guid PublicId { get; }
-        public Guid UserId { get; }
+        public long UserId { get; }
         public DateTime CreatedDate { get; }
         public ICollection<CartItem> CartItems { get; private set; }
         public User User { get; }
 
-        public Cart( Guid userId )
+        public Cart( long userId )
         {
-            if ( userId == Guid.Empty )
+            if ( userId == null )
             {
                 throw new ArgumentException( $"{nameof( userId )} can not be null " );
             }

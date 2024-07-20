@@ -8,11 +8,13 @@ namespace Infrastructure.Reviews
     {
         public void Configure( EntityTypeBuilder<Review> builder )
         {
+            builder.ToTable( "review" );
+
             builder.HasKey( r => r.Id );
             builder.HasAlternateKey( r => r.PublicId );
 
-            builder.Property( r => r.Id ).HasColumnName( "id" );
-            builder.Property( r => r.PublicId ).HasColumnName( "public_id" );
+            builder.Property( r => r.Id ).HasColumnName( "id" ).IsRequired();
+            builder.Property( r => r.PublicId ).HasColumnName( "public_id" ).IsRequired();
             builder.Property( r => r.ProductId ).HasColumnName( "product_id" ).IsRequired();
             builder.Property( r => r.UserId ).HasColumnName( "user_id" ).IsRequired();
             builder.Property( r => r.Rating ).HasColumnName( "rating" ).IsRequired();

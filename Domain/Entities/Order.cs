@@ -6,15 +6,15 @@ namespace Domain.Entities
     {
         public long Id { get; }
         public Guid PublicId { get; }
-        public Guid UserId { get; }
+        public long UserId { get; }
         public DateTime OrderDate { get; }
         public OrderStatus Status { get; private set; }
         public User User { get; }
         public ICollection<OrderItem> OrderItems { get; }
 
-        public Order( Guid userId )
+        public Order( long userId )
         {
-            if ( userId == Guid.Empty )
+            if ( userId == null )
             {
                 throw new ArgumentException( $"'{nameof( userId )}' cannot be null " );
             }

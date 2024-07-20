@@ -4,22 +4,22 @@
     {
         public long Id { get; }
         public Guid PublicId { get; }
-        public Guid OrderId { get; }
-        public Guid ProductId { get; }
+        public long OrderId { get; }
+        public long ProductId { get; }
         public decimal Quantity { get; }
         public decimal Price { get; }
         public string Currency { get; }
         public Order Order { get; }
         public Product Product { get; }
 
-        public OrderItem( Guid orderId, Guid productId, int quantity, decimal price )
+        public OrderItem( long orderId, long productId, decimal quantity, decimal price, string currency )
         {
-            if ( orderId == Guid.Empty )
+            if ( orderId == null )
             {
                 throw new ArgumentException( $"'{nameof( orderId )}' cannot be null " );
             }
 
-            if ( productId == Guid.Empty )
+            if ( productId == null )
             {
                 throw new ArgumentException( $"'{nameof( productId )}' cannot be null " );
             }
@@ -34,11 +34,17 @@
                 throw new ArgumentException( $"'{nameof( price )}' must be greater than zero.", nameof( price ) );
             }
 
+            if ( string.IsNullOrWhiteSpace( currency ) )
+            {
+                throw new ArgumentException( $"'{nameof( currency )}' cannot be null " );
+            }
+
             PublicId = Guid.NewGuid();
             OrderId = orderId;
             ProductId = productId;
             Quantity = quantity;
             Price = price;
+            Currency = currency;
         }
     }
 }
