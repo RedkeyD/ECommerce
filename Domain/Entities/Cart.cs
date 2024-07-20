@@ -2,7 +2,7 @@
 {
     public class Cart
     {
-        public long Id { get; }
+        public long Id { get; private set; }
         public Guid PublicId { get; }
         public long UserId { get; }
         public DateTime CreatedDate { get; }

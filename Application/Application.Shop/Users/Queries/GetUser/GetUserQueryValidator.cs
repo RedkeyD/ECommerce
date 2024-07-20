@@ -14,7 +14,7 @@ namespace Application.Users.Queries.GetUser
 
         public async Task<Result> ValidateAsync( GetUserQuery data )
         {
-            if ( data.UserId == Guid.Empty )
+            if ( data.UserId == null )
             {
                 return Result.Fail( new Error( "User cannot be empty", "Request.UserId" ) );
             }

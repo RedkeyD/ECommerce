@@ -2,7 +2,7 @@
 {
     public class Category
     {
-        public long Id { get; }
+        public long Id { get; private set; }
         public Guid PublicId { get; }
         public string Name { get; }
         public string Description { get; }

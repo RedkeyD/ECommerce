@@ -2,7 +2,7 @@
 {
     public class OrderItem
     {
-        public long Id { get; }
+        public long Id { get; private set; }
         public Guid PublicId { get; }
         public long OrderId { get; }
         public long ProductId { get; }

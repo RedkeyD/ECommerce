@@ -4,6 +4,6 @@ namespace Application.Users.Queries.GetUser
 {
     public class GetUserQuery : IQuery<GetUserQueryResult>
     {
-        public Guid UserId { get; }
+        public long UserId { get; }
     }
 }

@@ -11,4 +11,14 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="CartItems\Repository\" />
+    <Folder Include="Carts\Repository\" />
+    <Folder Include="Categories\Repository\" />
+    <Folder Include="OrderItems\Repository\" />
+    <Folder Include="Orders\Repository\" />
+    <Folder Include="Products\Repository\" />
+    <Folder Include="Reviews\Repository\" />
+  </ItemGroup>
+
 </Project>

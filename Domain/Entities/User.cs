@@ -2,7 +2,7 @@
 {
     public class User
     {
-        public long Id { get; }
+        public long Id { get; private set; }
         public Guid PublicId { get; }
         public ICollection<Order> Orders { get; }
         public Cart Cart { get; }
