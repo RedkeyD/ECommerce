@@ -19,11 +19,6 @@ namespace Presentation.ShopApi.Controllers
         {
             var user = await _userRepository.GetByIdAsync( id );
 
-            if ( user == null )
-            {
-                return NotFound();
-            }
-
             return Ok( user );
         }
     }
