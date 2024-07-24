@@ -8,264 +8,264 @@ namespace Infrastructure.Migrations
     public partial class ChangedTableNames : Migration
     {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
+        protected override void Up( MigrationBuilder migrationBuilder )
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_CartItems_Carts_cart_id",
-                table: "CartItems");
+                table: "CartItems" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_CartItems_Products_product_id",
-                table: "CartItems");
+                table: "CartItems" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Carts_Users_user_id",
-                table: "Carts");
+                table: "Carts" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_OrderItems_Orders_order_id",
-                table: "OrderItems");
+                table: "OrderItems" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_OrderItems_Products_product_id",
-                table: "OrderItems");
+                table: "OrderItems" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Orders_Users_user_id",
-                table: "Orders");
+                table: "Orders" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Products_Categories_category_id",
-                table: "Products");
+                table: "Products" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Reviews_Products_product_id",
-                table: "Reviews");
+                table: "Reviews" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Reviews_Users_user_id",
-                table: "Reviews");
+                table: "Reviews" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_Users_public_id",
-                table: "Users");
+                table: "Users" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Users",
-                table: "Users");
+                table: "Users" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_Reviews_public_id",
-                table: "Reviews");
+                table: "Reviews" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Reviews",
-                table: "Reviews");
+                table: "Reviews" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_Products_public_id",
-                table: "Products");
+                table: "Products" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Products",
-                table: "Products");
+                table: "Products" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_Orders_public_id",
-                table: "Orders");
+                table: "Orders" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Orders",
-                table: "Orders");
+                table: "Orders" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_OrderItems_public_id",
-                table: "OrderItems");
+                table: "OrderItems" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_OrderItems",
-                table: "OrderItems");
+                table: "OrderItems" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_Categories_public_id",
-                table: "Categories");
+                table: "Categories" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Categories",
-                table: "Categories");
+                table: "Categories" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_Carts_public_id",
-                table: "Carts");
+                table: "Carts" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_Carts",
-                table: "Carts");
+                table: "Carts" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_CartItems_public_id",
-                table: "CartItems");
+                table: "CartItems" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_CartItems",
-                table: "CartItems");
+                table: "CartItems" );
 
             migrationBuilder.RenameTable(
                 name: "Users",
-                newName: "user");
+                newName: "user" );
 
             migrationBuilder.RenameTable(
                 name: "Reviews",
-                newName: "review");
+                newName: "review" );
 
             migrationBuilder.RenameTable(
                 name: "Products",
-                newName: "product");
+                newName: "product" );
 
             migrationBuilder.RenameTable(
                 name: "Orders",
-                newName: "order");
+                newName: "order" );
 
             migrationBuilder.RenameTable(
                 name: "OrderItems",
-                newName: "order_item");
+                newName: "order_item" );
 
             migrationBuilder.RenameTable(
                 name: "Categories",
-                newName: "category");
+                newName: "category" );
 
             migrationBuilder.RenameTable(
                 name: "Carts",
-                newName: "cart");
+                newName: "cart" );
 
             migrationBuilder.RenameTable(
                 name: "CartItems",
-                newName: "cart_item");
+                newName: "cart_item" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_Reviews_user_id",
                 table: "review",
-                newName: "IX_review_user_id");
+                newName: "IX_review_user_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_Reviews_product_id",
                 table: "review",
-                newName: "IX_review_product_id");
+                newName: "IX_review_product_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_Products_category_id",
                 table: "product",
-                newName: "IX_product_category_id");
+                newName: "IX_product_category_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_Orders_user_id",
                 table: "order",
-                newName: "IX_order_user_id");
+                newName: "IX_order_user_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_OrderItems_product_id",
                 table: "order_item",
-                newName: "IX_order_item_product_id");
+                newName: "IX_order_item_product_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_OrderItems_order_id",
                 table: "order_item",
-                newName: "IX_order_item_order_id");
+                newName: "IX_order_item_order_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_Carts_user_id",
                 table: "cart",
-                newName: "IX_cart_user_id");
+                newName: "IX_cart_user_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_CartItems_product_id",
                 table: "cart_item",
-                newName: "IX_cart_item_product_id");
+                newName: "IX_cart_item_product_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_CartItems_cart_id",
                 table: "cart_item",
-                newName: "IX_cart_item_cart_id");
+                newName: "IX_cart_item_cart_id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_user_public_id",
                 table: "user",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_user",
                 table: "user",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_review_public_id",
                 table: "review",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_review",
                 table: "review",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_product_public_id",
                 table: "product",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_product",
                 table: "product",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_order_public_id",
                 table: "order",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_order",
                 table: "order",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_order_item_public_id",
                 table: "order_item",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_order_item",
                 table: "order_item",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_category_public_id",
                 table: "category",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_category",
                 table: "category",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_cart_public_id",
                 table: "cart",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_cart",
                 table: "cart",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_cart_item_public_id",
                 table: "cart_item",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_cart_item",
                 table: "cart_item",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_cart_user_user_id",
@@ -273,7 +273,7 @@ namespace Infrastructure.Migrations
                 column: "user_id",
                 principalTable: "user",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_cart_item_cart_cart_id",
@@ -281,7 +281,7 @@ namespace Infrastructure.Migrations
                 column: "cart_id",
                 principalTable: "cart",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_cart_item_product_product_id",
@@ -289,7 +289,7 @@ namespace Infrastructure.Migrations
                 column: "product_id",
                 principalTable: "product",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_order_user_user_id",
@@ -297,7 +297,7 @@ namespace Infrastructure.Migrations
                 column: "user_id",
                 principalTable: "user",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_order_item_order_order_id",
@@ -305,7 +305,7 @@ namespace Infrastructure.Migrations
                 column: "order_id",
                 principalTable: "order",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_order_item_product_product_id",
@@ -313,7 +313,7 @@ namespace Infrastructure.Migrations
                 column: "product_id",
                 principalTable: "product",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_product_category_category_id",
@@ -321,7 +321,7 @@ namespace Infrastructure.Migrations
                 column: "category_id",
                 principalTable: "category",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_review_product_product_id",
@@ -329,7 +329,7 @@ namespace Infrastructure.Migrations
                 column: "product_id",
                 principalTable: "product",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_review_user_user_id",
@@ -337,268 +337,268 @@ namespace Infrastructure.Migrations
                 column: "user_id",
                 principalTable: "user",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
+        protected override void Down( MigrationBuilder migrationBuilder )
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_cart_user_user_id",
-                table: "cart");
+                table: "cart" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_cart_item_cart_cart_id",
-                table: "cart_item");
+                table: "cart_item" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_cart_item_product_product_id",
-                table: "cart_item");
+                table: "cart_item" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_order_user_user_id",
-                table: "order");
+                table: "order" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_order_item_order_order_id",
-                table: "order_item");
+                table: "order_item" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_order_item_product_product_id",
-                table: "order_item");
+                table: "order_item" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_product_category_category_id",
-                table: "product");
+                table: "product" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_review_product_product_id",
-                table: "review");
+                table: "review" );
 
             migrationBuilder.DropForeignKey(
                 name: "FK_review_user_user_id",
-                table: "review");
+                table: "review" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_user_public_id",
-                table: "user");
+                table: "user" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_user",
-                table: "user");
+                table: "user" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_review_public_id",
-                table: "review");
+                table: "review" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_review",
-                table: "review");
+                table: "review" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_product_public_id",
-                table: "product");
+                table: "product" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_product",
-                table: "product");
+                table: "product" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_order_item_public_id",
-                table: "order_item");
+                table: "order_item" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_order_item",
-                table: "order_item");
+                table: "order_item" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_order_public_id",
-                table: "order");
+                table: "order" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_order",
-                table: "order");
+                table: "order" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_category_public_id",
-                table: "category");
+                table: "category" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_category",
-                table: "category");
+                table: "category" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_cart_item_public_id",
-                table: "cart_item");
+                table: "cart_item" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_cart_item",
-                table: "cart_item");
+                table: "cart_item" );
 
             migrationBuilder.DropUniqueConstraint(
                 name: "AK_cart_public_id",
-                table: "cart");
+                table: "cart" );
 
             migrationBuilder.DropPrimaryKey(
                 name: "PK_cart",
-                table: "cart");
+                table: "cart" );
 
             migrationBuilder.RenameTable(
                 name: "user",
-                newName: "Users");
+                newName: "Users" );
 
             migrationBuilder.RenameTable(
                 name: "review",
-                newName: "Reviews");
+                newName: "Reviews" );
 
             migrationBuilder.RenameTable(
                 name: "product",
-                newName: "Products");
+                newName: "Products" );
 
             migrationBuilder.RenameTable(
                 name: "order_item",
-                newName: "OrderItems");
+                newName: "OrderItems" );
 
             migrationBuilder.RenameTable(
                 name: "order",
-                newName: "Orders");
+                newName: "Orders" );
 
             migrationBuilder.RenameTable(
                 name: "category",
-                newName: "Categories");
+                newName: "Categories" );
 
             migrationBuilder.RenameTable(
                 name: "cart_item",
-                newName: "CartItems");
+                newName: "CartItems" );
 
             migrationBuilder.RenameTable(
                 name: "cart",
-                newName: "Carts");
+                newName: "Carts" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_review_user_id",
                 table: "Reviews",
-                newName: "IX_Reviews_user_id");
+                newName: "IX_Reviews_user_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_review_product_id",
                 table: "Reviews",
-                newName: "IX_Reviews_product_id");
+                newName: "IX_Reviews_product_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_product_category_id",
                 table: "Products",
-                newName: "IX_Products_category_id");
+                newName: "IX_Products_category_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_order_item_product_id",
                 table: "OrderItems",
-                newName: "IX_OrderItems_product_id");
+                newName: "IX_OrderItems_product_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_order_item_order_id",
                 table: "OrderItems",
-                newName: "IX_OrderItems_order_id");
+                newName: "IX_OrderItems_order_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_order_user_id",
                 table: "Orders",
-                newName: "IX_Orders_user_id");
+                newName: "IX_Orders_user_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_cart_item_product_id",
                 table: "CartItems",
-                newName: "IX_CartItems_product_id");
+                newName: "IX_CartItems_product_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_cart_item_cart_id",
                 table: "CartItems",
-                newName: "IX_CartItems_cart_id");
+                newName: "IX_CartItems_cart_id" );
 
             migrationBuilder.RenameIndex(
                 name: "IX_cart_user_id",
                 table: "Carts",
-                newName: "IX_Carts_user_id");
+                newName: "IX_Carts_user_id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_Users_public_id",
                 table: "Users",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Users",
                 table: "Users",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_Reviews_public_id",
                 table: "Reviews",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Reviews",
                 table: "Reviews",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_Products_public_id",
                 table: "Products",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Products",
                 table: "Products",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_OrderItems_public_id",
                 table: "OrderItems",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_OrderItems",
                 table: "OrderItems",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_Orders_public_id",
                 table: "Orders",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Orders",
                 table: "Orders",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_Categories_public_id",
                 table: "Categories",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Categories",
                 table: "Categories",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_CartItems_public_id",
                 table: "CartItems",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_CartItems",
                 table: "CartItems",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddUniqueConstraint(
                 name: "AK_Carts_public_id",
                 table: "Carts",
-                column: "public_id");
+                column: "public_id" );
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_Carts",
                 table: "Carts",
-                column: "id");
+                column: "id" );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_CartItems_Carts_cart_id",
@@ -606,7 +606,7 @@ namespace Infrastructure.Migrations
                 column: "cart_id",
                 principalTable: "Carts",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_CartItems_Products_product_id",
@@ -614,7 +614,7 @@ namespace Infrastructure.Migrations
                 column: "product_id",
                 principalTable: "Products",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Carts_Users_user_id",
@@ -622,7 +622,7 @@ namespace Infrastructure.Migrations
                 column: "user_id",
                 principalTable: "Users",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_OrderItems_Orders_order_id",
@@ -630,7 +630,7 @@ namespace Infrastructure.Migrations
                 column: "order_id",
                 principalTable: "Orders",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_OrderItems_Products_product_id",
@@ -638,7 +638,7 @@ namespace Infrastructure.Migrations
                 column: "product_id",
                 principalTable: "Products",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Orders_Users_user_id",
@@ -646,7 +646,7 @@ namespace Infrastructure.Migrations
                 column: "user_id",
                 principalTable: "Users",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Products_Categories_category_id",
@@ -654,7 +654,7 @@ namespace Infrastructure.Migrations
                 column: "category_id",
                 principalTable: "Categories",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Reviews_Products_product_id",
@@ -662,7 +662,7 @@ namespace Infrastructure.Migrations
                 column: "product_id",
                 principalTable: "Products",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Reviews_Users_user_id",
@@ -670,7 +670,7 @@ namespace Infrastructure.Migrations
                 column: "user_id",
                 principalTable: "Users",
                 principalColumn: "id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.Cascade );
         }
     }
 }

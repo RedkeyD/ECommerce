@@ -1,4 +1,5 @@
-﻿using Application.Users;
+﻿using Application.Users.Queries.GetUser;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.ShopApi.Controllers
@@ -7,17 +8,17 @@ namespace Presentation.ShopApi.Controllers
     [Route( "api/[controller]" )]
     public class UsersController : ControllerBase
     {
-        private readonly IUserRepository _userRepository;
+        private readonly ISender _sender;
 
-        public UsersController( IUserRepository userService )
+        public UsersController( ISender sender )
         {
-            _userRepository = userService;
+            _sender = sender;
         }
 
         [HttpGet( "{id}" )]
-        public async Task<IActionResult> GetUser( long id )
+        public async Task<IActionResult> GetUser( Guid id )
         {
-            var user = await _userRepository.GetByIdAsync( id );
+            var user = await _sender.Send( new GetUserQuery( id ) );
 
             return Ok( user );
         }

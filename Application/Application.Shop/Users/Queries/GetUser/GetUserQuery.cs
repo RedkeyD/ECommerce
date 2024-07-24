@@ -2,8 +2,5 @@
 
 namespace Application.Users.Queries.GetUser
 {
-    public class GetUserQuery : IQuery<GetUserQueryResult>
-    {
-        public long UserId { get; }
-    }
+    public record GetUserQuery( Guid UserId ) : IQuery<GetUserQueryResult>;
 }

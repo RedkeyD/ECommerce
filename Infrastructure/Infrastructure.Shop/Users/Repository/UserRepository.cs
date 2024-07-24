@@ -1,6 +1,7 @@
 ﻿using Application.Users;
 using Domain.Entities;
 using Infrastructure.Foundation.EntityFramework;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
@@ -13,14 +14,16 @@ namespace Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<User> GetByIdAsync( long id )
+        public async Task<User> GetByIdAsync( Guid userId )
         {
-            return await _context.Users.FindAsync( id );
+            return await _context.Users.FirstOrDefaultAsync( u => u.PublicId == userId );
         }
 
-        public Task<bool> IsUserExistsAsync( long userId )
+        public async Task<bool> IsUserExistsAsync( Guid userId )
         {
-            throw new NotImplementedException();
+            var user = await _context.Users.FirstOrDefaultAsync( u => u.PublicId == userId );
+
+            return user != null;
         }
     }
 }

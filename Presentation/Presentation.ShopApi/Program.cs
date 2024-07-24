@@ -1,4 +1,6 @@
+using Application.Abstractions.Validators;
 using Application.Users;
+using Application.Users.Queries.GetUser;
 using Infrastructure.Foundation.EntityFramework;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder( args );
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAsyncValidator<GetUserQuery>, GetUserQueryValidator>();
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

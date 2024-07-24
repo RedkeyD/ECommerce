@@ -4,7 +4,7 @@ namespace Application.Users
 {
     public interface IUserRepository
     {
-        Task<bool> IsUserExistsAsync( long userId);
-        Task<User> GetByIdAsync( long userId );
+        Task<bool> IsUserExistsAsync( Guid userId );
+        Task<User> GetByIdAsync( Guid userId );
     }
 }
